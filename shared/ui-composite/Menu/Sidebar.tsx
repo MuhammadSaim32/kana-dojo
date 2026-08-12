@@ -645,6 +645,21 @@ const Sidebar = () => {
           'lg:flex lg:w-full lg:flex-col lg:gap-1',
         )}
       >
+        <button
+          onClick={toggleDesktopSidebarCollapse}
+          className={clsx(
+            'ml-1.5 hidden cursor-pointer items-center rounded-2xl px-3 py-1.5 text-(--secondary-color) transition-colors hover:bg-(--card-color) hover:text-(--main-color) lg:flex',
+          )}
+          aria-label={
+            isDesktopSidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'
+          }
+        >
+          {isDesktopSidebarCollapsed ? (
+            <PanelLeftOpen className='h-5 w-5 shrink-0' />
+          ) : (
+            <PanelLeftClose className='h-5 w-5 shrink-0' />
+          )}
+        </button>
         {mainNavItems.map(item => (
           <NavLink
             key={item.href}
@@ -712,22 +727,6 @@ const Sidebar = () => {
             </div>
           );
         })}
-
-      <button
-        onClick={toggleDesktopSidebarCollapse}
-        className={clsx(
-          'hidden cursor-pointer items-center rounded-2xl px-3 py-1.5 text-(--secondary-color) transition-colors hover:bg-(--card-color) hover:text-(--main-color) lg:absolute lg:bottom-8 lg:left-5 lg:flex',
-        )}
-        aria-label={
-          isDesktopSidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'
-        }
-      >
-        {isDesktopSidebarCollapsed ? (
-          <PanelLeftOpen className='h-5 w-5 shrink-0' />
-        ) : (
-          <PanelLeftClose className='h-5 w-5 shrink-0' />
-        )}
-      </button>
     </motion.aside>
   );
 };
